@@ -1,20 +1,20 @@
 {
-  "name": "@seneca/stytch-provider",
+  "name": "@seneca/evervault-provider",
   "version": "0.2.0",
-  "main": "dist/stytch-provider.js",
+  "main": "dist/evervault-provider.js",
   "type": "commonjs",
-  "types": "dist/stytch-provider.d.ts",
-  "description": "Seneca entity provider for the Stytch API.",
-  "homepage": "https://github.com/senecajs/seneca-stytch-provider",
+  "types": "dist/evervault-provider.d.ts",
+  "description": "Seneca entity provider for the Evervault API.",
+  "homepage": "https://github.com/senecajs/seneca-evervault-provider",
   "keywords": [
     "seneca",
-    "stytch",
-    "stytch-provider"
+    "evervault",
+    "evervault-provider"
   ],
   "author": "Richard Rodger - richardrodger.com",
   "repository": {
     "type": "git",
-    "url": "git://stytch.com/senecajs/seneca-stytch-provider.git"
+    "url": "git://evervault.com/senecajs/seneca-evervault-provider.git"
   },
   "scripts": {
     "test": "jest --coverage",
@@ -40,7 +40,7 @@
     "node": ">=14"
   },
   "dependencies": {
-    "stytch": "^5.12.1"
+    "@evervault/sdk": "^3.2.0"
   },
   "peerDependencies": {
     "@seneca/env": ">=0.2",

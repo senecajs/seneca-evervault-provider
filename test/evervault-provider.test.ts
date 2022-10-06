@@ -6,8 +6,8 @@ import * as Fs from 'fs'
 const Seneca = require('seneca')
 const SenecaMsgTest = require('seneca-msg-test')
 
-import StytchProvider from '../src/stytch-provider'
-import StytchProviderDoc from '../src/StytchProvider-doc'
+import EvervaultProvider from '../src/evervault-provider'
+import EvervaultProviderDoc from '../src/EvervaultProvider-doc'
 
 const BasicMessages = require('./basic.messages.js')
 
@@ -19,20 +19,20 @@ if (Fs.existsSync(__dirname + '/local-config.js')) {
 }
 
 
-describe('stytch-provider', () => {
+describe('evervault-provider', () => {
 
   test('happy', async () => {
-    expect(StytchProvider).toBeDefined()
-    expect(StytchProviderDoc).toBeDefined()
+    expect(EvervaultProvider).toBeDefined()
+    expect(EvervaultProviderDoc).toBeDefined()
 
     const seneca = await makeSeneca()
-    let sdk = seneca.export('StytchProvider/sdk')()
+    let sdk = seneca.export('EvervaultProvider/sdk')()
     expect(sdk).toBeDefined()
 
-    expect(await seneca.post('sys:provider,provider:stytch,get:info'))
+    expect(await seneca.post('sys:provider,provider:evervault,get:info'))
       .toMatchObject({
         ok: true,
-        name: 'stytch',
+        name: 'evervault',
       })
   })
 
@@ -43,13 +43,6 @@ describe('stytch-provider', () => {
   })
 
 
-  test('user-basic', async () => {
-    if (!Config) return;
-    const seneca = await makeSeneca()
-
-    const list = await seneca.entity("provider/stytch/user").list$()
-    expect(list.length > 0).toBeTruthy()
-  })
 })
 
 
@@ -62,21 +55,21 @@ async function makeSeneca() {
       // debug: true,
       file: [__dirname + '/local-env.js;?'],
       var: {
-        $STYTCH_PROJECT_ID: String,
-        $STYTCH_SECRET: String,
+        $EVERVAULT_APP_ID: String,
+        $EVERVAULT_API_KEY: String,
       }
     })
     .use('provider', {
       provider: {
-        stytch: {
+        evervault: {
           keys: {
-            project_id: { value: '$STYTCH_PROJECT_ID' },
-            secret: { value: '$STYTCH_SECRET' },
+            app_id: { value: '$EVERVAULT_APP_ID' },
+            api_key: { value: '$EVERVAULT_API_KEY' },
           }
         }
       }
     })
-    .use(StytchProvider)
+    .use(EvervaultProvider)
 
   return seneca.ready()
 }

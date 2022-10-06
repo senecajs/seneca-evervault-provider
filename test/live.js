@@ -8,16 +8,16 @@ Seneca({ legacy: false })
     // debug: true,
     file: [__dirname + '/local-env.js;?'],
     var: {
-      STYTCH_PROJECT_ID: String,
-      $STYTCH_SECRET: String,
+      EVERVAULT_APP_ID: String,
+      $EVERVAULT_API_KEY: String,
     }
   })
   .use('provider', {
     provider: {
-      stytch: {
+      evervault: {
         keys: {
-          project_id: { value: '$STYTCH_PROJECT_ID' },
-          secret: { value: '$STYTCH_SECRET' },
+          app_id: { value: '$EVERVAULT_APP_ID' },
+          api_key: { value: '$EVERVAULT_API_KEY' },
         }
       }
     }
@@ -26,11 +26,8 @@ Seneca({ legacy: false })
   .ready(async function() {
     const seneca = this
 
-    console.log('SDK:', seneca.export('StytchProvider/sdk')())
+    console.log('SDK:', seneca.export('EvervaultProvider/sdk')())
 
-    console.log(await seneca.post('sys:provider,provider:stytch,get:info'))
-    
-    const list = await seneca.entity("provider/stytch/user").list$()
-    console.log(list.slice(0,3))
+    console.log(await seneca.post('sys:provider,provider:evervault,get:info'))
   })
 

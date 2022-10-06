@@ -4,7 +4,7 @@ const Pkg = require('../package.json')
 
 module.exports = {
   print: false,
-  pattern: 'sys:provider,provider:stytch',
+  pattern: 'sys:provider,provider:evervault',
   allow: { missing: true },
 
   calls: [
@@ -12,11 +12,11 @@ module.exports = {
       pattern: 'get:info',
       out: {
         ok: true,
-        name: 'stytch',
+        name: 'evervault',
         version: Pkg.version,
         sdk: {
-          name: 'stytch',
-          version: Pkg.dependencies['stytch'],
+          name: 'evervault',
+          version: Pkg.dependencies['@evervault/sdk'],
         }
       },
     }

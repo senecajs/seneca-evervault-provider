@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const docs = {
     get_info: {
-        desc: 'Get information about the Stytch SDK.',
+        desc: 'Get information about the Evervault SDK.',
     },
 };
 exports.default = docs;
 if ('undefined' !== typeof (module)) {
     module.exports = docs;
 }
-//# sourceMappingURL=StytchProvider-doc.js.map
+//# sourceMappingURL=EvervaultProvider-doc.js.map

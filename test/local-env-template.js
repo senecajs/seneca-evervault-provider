@@ -1,4 +1,4 @@
 module.exports = {
-  STYTCH_APIKEY: '<API-KEY>',
-  STYTCH_USERTOKEN: '<USER-TOKEN>',
+  EVERVAULT_APP_ID: '<APP_ID>',
+  EVERVAULT_API_KEY: '<API-KEY>',
 }
