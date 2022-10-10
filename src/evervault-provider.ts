@@ -1,12 +1,17 @@
 /* Copyright © 2022 Seneca Project Contributors, MIT License. */
 
+
+import { Open } from 'gubu'
+
 const Pkg = require('../package.json')
 
 const Evervault = require('@evervault/sdk')
 
 
+
 type EvervaultProviderOptions = {
   debug: boolean,
+  config: any
 }
 
 
@@ -54,7 +59,7 @@ function EvervaultProvider(this: any, options: EvervaultProviderOptions) {
     let app_id = res.keymap.app_id.value
     let api_key = res.keymap.api_key.value
 
-    seneca.shared.sdk = new Evervault(api_key)
+    seneca.shared.sdk = new Evervault(api_key, options.config)
   })
 
 
@@ -70,7 +75,9 @@ function EvervaultProvider(this: any, options: EvervaultProviderOptions) {
 const defaults: EvervaultProviderOptions = {
 
   // TODO: Enable debug logging
-  debug: false
+  debug: false,
+
+  config: Open({}),
 }
 
 
