@@ -56,7 +56,7 @@ function EvervaultProvider(this: any, options: EvervaultProviderOptions) {
       this.fail('evervault-missing-keymap', res)
     }
 
-    let app_id = res.keymap.app_id.value
+    // let app_id = res.keymap.app_id.value
     let api_key = res.keymap.api_key.value
 
     seneca.shared.sdk = new Evervault(api_key, options.config)

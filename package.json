@@ -1,6 +1,6 @@
 {
   "name": "@seneca/evervault-provider",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "dist/evervault-provider.js",
   "type": "commonjs",
   "types": "dist/evervault-provider.d.ts",
@@ -40,7 +40,7 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@evervault/sdk": "^3.2.3"
+    "@evervault/sdk": "^3.3.1"
   },
   "peerDependencies": {
     "@seneca/env": ">=0.2",
@@ -51,12 +51,11 @@
   },
   "devDependencies": {
     "@seneca/doc": "^4.1.0",
-    "@types/jest": "^29.1.2",
-    "@types/node": "^18.8.5",
-    "esbuild": "^0.15.10",
+    "@types/jest": "^29.2.2",
+    "@types/node": "^18.11.9",
+    "esbuild": "^0.15.13",
     "esbuild-jest": "^0.5.0",
-    "jest": "^29.1.2",
-    "seneca": ">=3",
+    "jest": "^29.3.1",
     "seneca-msg-test": "^3.4.0",
     "typescript": "^4.8.4"
   }
