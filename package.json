@@ -1,6 +1,6 @@
 {
   "name": "@seneca/evervault-provider",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "dist/evervault-provider.js",
   "type": "commonjs",
   "types": "dist/evervault-provider.d.ts",
@@ -40,7 +40,7 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@evervault/sdk": "^3.3.1"
+    "@evervault/sdk": "3.3.1"
   },
   "peerDependencies": {
     "@seneca/env": ">=0.2",

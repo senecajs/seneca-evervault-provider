@@ -1,4 +1,4 @@
-declare type EvervaultProviderOptions = {
+type EvervaultProviderOptions = {
     debug: boolean;
     config: any;
 };
