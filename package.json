@@ -14,7 +14,7 @@
   "author": "Richard Rodger - richardrodger.com",
   "repository": {
     "type": "git",
-    "url": "git://evervault.com/senecajs/seneca-evervault-provider.git"
+    "url": "git://github.com/senecajs/seneca-evervault-provider.git"
   },
   "scripts": {
     "test": "jest --coverage",
