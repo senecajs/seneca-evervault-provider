@@ -12,44 +12,15 @@
 | ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
 |---|---|
 
-## Quick Example
 
+Provides access to the Evervault API using the Seneca *provider*
+convention. Evervault API entities are represented as Seneca entities so
+that they can be accessed using the Seneca entity API and messages.
+See [seneca-entity](senecajs/seneca-entity) and the [Seneca Data
+Entities
+Tutorial](https://senecajs.org/docs/tutorials/understanding-data-entities.html) for more details on the Seneca entity API.
+NOTE: underlying third party SDK needs to be replaced as out of date and has a security issue.
 
-```js
-
-// Setup - get the key value (<SECRET>) separately from a vault or
-// environment variable.
-Seneca()
-  // Get API keys using the seneca-env plugin
-  .use('env', {
-    var: {
-      $EVERVAULT_APIKEY: String,
-      $EVERVAULT_USERTOKEN: String,
-    }
-  })
-  .use('provider', {
-    provider: {
-      evervault: {
-        keys: {
-          apikey: { value: '$EVERVAULT_APIKEY' },
-          usertoken: { value: '$EVERVAULT_USERTOKEN' },
-        }
-      }
-    }
-  })
-  .use('evervault-provider')
-
-let board = await seneca.entity('provider/evervault/board')
-  .load$('<evervault-board-id>')
-
-Console.log('BOARD', board)
-
-board.desc = 'New description'
-board = await board.save$()
-
-Console.log('UPDATED BOARD', board)
-
-```
 
 ## Install
 
