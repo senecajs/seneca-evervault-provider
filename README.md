@@ -12,6 +12,45 @@
 | ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
 |---|---|
 
+## Quick Example
+
+
+```js
+
+// Setup - get the key value (<SECRET>) separately from a vault or
+// environment variable.
+Seneca()
+  // Get API keys using the seneca-env plugin
+  .use('env', {
+    var: {
+      $EVERVAULT_APIKEY: String,
+      $EVERVAULT_USERTOKEN: String,
+    }
+  })
+  .use('provider', {
+    provider: {
+      evervault: {
+        keys: {
+          apikey: { value: '$EVERVAULT_APIKEY' },
+          usertoken: { value: '$EVERVAULT_USERTOKEN' },
+        }
+      }
+    }
+  })
+  .use('evervault-provider')
+
+let board = await seneca.entity('provider/evervault/board')
+  .load$('<evervault-board-id>')
+
+Console.log('BOARD', board)
+
+board.desc = 'New description'
+board = await board.save$()
+
+Console.log('UPDATED BOARD', board)
+
+```
+
 ## Install
 
 ```sh
