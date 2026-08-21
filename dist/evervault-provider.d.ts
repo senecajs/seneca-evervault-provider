@@ -1,6 +1,7 @@
 type EvervaultProviderOptions = {
-    debug: boolean;
-    config: any;
+    sdk?: Record<string, any>;
+    test?: boolean;
+    testopts?: Record<string, any>;
 };
 declare function EvervaultProvider(this: any, options: EvervaultProviderOptions): {
     exports: {
