@@ -1,7 +1,6 @@
 "use strict";
 /* Copyright © 2022 Seneca Project Contributors, MIT License. */
 Object.defineProperty(exports, "__esModule", { value: true });
-const gubu_1 = require("gubu");
 const Pkg = require('../package.json');
 const Evervault = require('@evervault/sdk');
 function EvervaultProvider(options) {
@@ -42,12 +41,13 @@ function EvervaultProvider(options) {
         }
     };
 }
-// Default options.
-const defaults = {
+// Default options, built with the validator that Seneca passes in.
+const defaults = ({ valid }) => ({
     // TODO: Enable debug logging
     debug: false,
-    config: (0, gubu_1.Open)({}),
-};
+    // Passed straight to the Evervault SDK client, so any keys are allowed.
+    config: valid.Open({}),
+});
 Object.assign(EvervaultProvider, { defaults });
 exports.default = EvervaultProvider;
 if ('undefined' !== typeof (module)) {

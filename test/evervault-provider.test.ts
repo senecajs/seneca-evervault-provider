@@ -18,6 +18,12 @@ if (Fs.existsSync(__dirname + '/local-config.js')) {
   Config = require('./local-config')
 }
 
+// The env plugin requires both keys. These tests only construct the SDK
+// client, which makes no Evervault call, so placeholder values suffice
+// when no real keys are set.
+process.env.EVERVAULT_APP_ID ??= 'test-app-id'
+process.env.EVERVAULT_API_KEY ??= 'test-api-key'
+
 
 describe('evervault-provider', () => {
 
@@ -49,9 +55,8 @@ describe('evervault-provider', () => {
 async function makeSeneca() {
   const seneca = Seneca({ legacy: false })
     .test()
-    .use('promisify')
-    .use('entity')
-    .use('env', {
+    .use('@seneca/entity')
+    .use('@seneca/env', {
       // debug: true,
       file: [__dirname + '/local-env.js;?'],
       var: {
@@ -59,7 +64,7 @@ async function makeSeneca() {
         $EVERVAULT_API_KEY: String,
       }
     })
-    .use('provider', {
+    .use('@seneca/provider', {
       provider: {
         evervault: {
           keys: {

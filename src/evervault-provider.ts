@@ -1,7 +1,7 @@
 /* Copyright © 2022 Seneca Project Contributors, MIT License. */
 
 
-import { Open } from 'gubu'
+import type Seneca from 'seneca'
 
 const Pkg = require('../package.json')
 
@@ -71,14 +71,15 @@ function EvervaultProvider(this: any, options: EvervaultProviderOptions) {
 }
 
 
-// Default options.
-const defaults: EvervaultProviderOptions = {
+// Default options, built with the validator that Seneca passes in.
+const defaults = ({ valid }: { valid: Seneca.Instance['valid'] }) => ({
 
   // TODO: Enable debug logging
   debug: false,
 
-  config: Open({}),
-}
+  // Passed straight to the Evervault SDK client, so any keys are allowed.
+  config: valid.Open({}),
+})
 
 
 Object.assign(EvervaultProvider, { defaults })
